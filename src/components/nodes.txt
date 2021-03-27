@@ -1,0 +1,66 @@
+<div className="sideNavBar--collections--mainNode">
+                    <div className="sideNavBar--collections--mainNode--content" ref={inputCheckRef} onClick={collectionCollapse}>
+                        <span className="sideNavBar--collections--mainNode--text">
+                            <FontAwesomeIcon icon={faChevronRight} />
+                            Collection 1.0.0
+                        </span>
+                        <span className="sideNavBar--collections--mainNode--icon">
+                            <FontAwesomeIcon icon={faPlus} />
+                            <FontAwesomeIcon icon={faPlusSquare} />
+                            <FontAwesomeIcon icon={faEllipsisV} />
+                        </span>
+                    </div>
+                    <div className="sideNavBar--collections--children">
+                        <div className="sideNavBar--collections--mainNode">
+                            <div className="sideNavBar--collections--mainNode--content">
+                                <span className="sideNavBar--collections--mainNode--text">
+                                   <FontAwesomeIcon icon={faChevronRight} />
+                                    Collection 1.0.0
+                                </span>
+                                <span className="sideNavBar--collections--mainNode--icon">
+                                    <FontAwesomeIcon icon={faPlus} />
+                                    <FontAwesomeIcon icon={faPlusSquare} />
+                                    <FontAwesomeIcon icon={faEllipsisV} />
+                                </span>
+                            </div>
+                            <div className="sideNavBar--collections--children">
+
+                            </div>
+                        </div>
+                        <div className="sideNavBar--collections--mainNode">
+                            <div className="sideNavBar--collections--mainNode--content">
+                                <span className="sideNavBar--collections--mainNode--text">
+                                   <FontAwesomeIcon icon={faChevronRight} />
+                                    Collection 1.0.0
+                                </span>
+                                <span className="sideNavBar--collections--mainNode--icon">
+                                    <FontAwesomeIcon icon={faPlus} />
+                                    <FontAwesomeIcon icon={faPlusSquare} />
+                                    <FontAwesomeIcon icon={faEllipsisV} />
+                                </span>
+                            </div>
+                            <div className="sideNavBar--collections--children">
+
+                            </div>
+                        </div>
+                        <div className="sideNavBar--collections--mainNode">
+                            <div className="sideNavBar--collections--mainNode--content">
+                                <span className="sideNavBar--collections--mainNode--text">
+                                   <FontAwesomeIcon icon={faChevronRight} />
+                                    Collection 1.0.0
+                                </span>
+                                <span className="sideNavBar--collections--mainNode--icon">
+                                    <FontAwesomeIcon icon={faPlus} />
+                                    <FontAwesomeIcon icon={faPlusSquare} />
+                                    <FontAwesomeIcon icon={faEllipsisV} />
+                                </span>
+                            </div>
+                            <div className="sideNavBar--collections--children">
+
+                            </div>
+                        </div>
+                        <div className="sideNavBar--collections--subNode">
+                            <span>Hello</span>
+                        </div>
+                    </div>
+                </div>
