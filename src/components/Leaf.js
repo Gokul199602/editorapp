@@ -30,15 +30,30 @@ const Leaf = (props)=>{
     {
         dispatch(detail(getNode(getUrlId())));
     }
-    var openLeaf = ()=>
+    var removeActiveEls = ()=>{
+        let activeEls = document.querySelectorAll(".sideNavBar--collections .active");
+        activeEls.forEach((els)=>{
+            els.classList.remove("active");
+        }); 
+    }
+    var openLeaf = (e)=>
     {
         dispatch(detail(getNode(props.name.id)));
+        removeActiveEls();
+        let activeElement =  document.querySelector(".activeElement"),
+        targetElement = e.target,
+        topPosition = targetElement.offsetTop-8;
+        targetElement.classList.add("active");
+        activeElement.style.cssText = `
+        top:${topPosition}px;
+        display:block;
+        `;
     }
 
     console.log("leaf nodes",nodes);
     return (
-        <Link to={'/leaf/'+props.name.id} onClick={openLeaf} className="sideNavBar--collections--subNode">
-                    <span>{props.name.nodeName}</span>
+        <Link to={'/leaf/'+props.name.id} onClick={openLeaf} className="sideNavBar--collections--subNode" data-path={props.name.path}>
+                    <span data-path={props.name.path}>{props.name.nodeName}</span>
         </Link>
         
 )}

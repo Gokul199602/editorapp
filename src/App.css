@@ -208,13 +208,12 @@
 
 .activeElement
 {
+  display: none;
   position: absolute;
   width: 100%;
   height: 38px;
-  display: block;
   border-left: 2px solid #d32f2f;
   background: rgba(0,0,0,0.06);
-  top: 78px;
 }
 
 .detailsContainer .sideNavBar .sideNavBar--header .sideNavBar--header--icons>svg,
