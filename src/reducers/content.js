@@ -1,10 +1,10 @@
-const contentReducer = (state = {},action)=>{
+const contentReducer = (state = null,action)=>{
     switch(action.type)
     {
         case 'DETAIL':
             return action.detail;
         default:
-            return null;
+            return state;
     }
 }
 

@@ -225,6 +225,31 @@
   flex: 1 1 80%;
 }
 
+.detailsContainer .mainContent .mainContent--container
+{
+  padding: 22px 10%;
+}
+.mainContent--header--container
+{
+  width: 100%;
+  font-size: 13px;
+  color: var(--text);
+}
+.mainContent--header--container>span:last-child
+{
+  margin-left: 4%;
+}
+.mainContent--contentEditor
+{
+  min-height: calc(100vh - 210px);
+}
+.detailsContainer .mainContent .mainContent--container .mainContent--header h2
+{
+  font-weight: 300;
+  font-size: 40px;
+  margin: 0px;
+}
+
 .detailsContainer .mainContent .mainContent--detail
 {
   display: flex;
