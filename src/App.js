@@ -117,7 +117,7 @@ var createChildrenNode = function(current,id,obj) {
         </header>
           <Navcontrol />
           <div className="detailsContainer">
-            <Sidenav isOpenModal={openModal} isNode={nodes}/>
+            <Sidenav isOpenModal={openModal} isNode={nodes} getAllNodes={getAllNodes}/>
             <Content getAllNodes={getAllNodes} getId={getUrlId}/>
           </div>
           <Modal isModal={modal} isCloseModal={closeModal} isSave={saveModal} />

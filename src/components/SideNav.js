@@ -18,7 +18,7 @@ const Sidenav = (props)=>{
         if(node.nodeType == "container")
         childList.push(<Container key={node.id}   name={node} callFun={appendChild} isOpenModal={props.isOpenModal}/>);
         else
-        childList.push(<Leaf key={node.id}   name={node} callFun={appendChild} />);
+        childList.push(<Leaf key={node.id}   name={node} callFun={appendChild} getAllNodes={props.getAllNodes} />);
       }    
       return childList;
   }
@@ -27,7 +27,7 @@ const Sidenav = (props)=>{
     if(node.nodeType == "container")
     list.push(<Container key={node.id} name={node} callFun={appendChild} isOpenModal={props.isOpenModal} />);
     else
-    list.push(<Leaf key={node.id} name={node} callFun={appendChild} />);
+    list.push(<Leaf key={node.id} name={node} callFun={appendChild} getAllNodes={props.getAllNodes} />);
   }
     return (
         <div className="sideNavBar">

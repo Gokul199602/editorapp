@@ -1,27 +1,15 @@
-import React,{useEffect,useRef,useState} from "react";
-import {Link,Route,Switch,  BrowserRouter as Router} from 'react-router-dom';
+import React,{useState} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch,faFileTextO, faUserPlus, faBell,faFile} from '@fortawesome/free-solid-svg-icons'
-
-
+import {faFile} from '@fortawesome/free-solid-svg-icons'
+import {useSelector, useDispatch} from 'react-redux';
 
 
 const Content = (props)=>{
-    var getNode = (id) =>{
-        let returnObj;
-        props.getAllNodes().forEach((els)=>{
-            if(els.id == id)
-            {
-                returnObj = els;
-            }
-        })
-        return returnObj;
-    }
-    const [urlRoute, setUrlRoute] = useState(window.location.href);
-    const [getNodeEl, setGetNodeEl] = useState(props.getId());
+    
+    const content = useSelector(state => state.content);
     return (
         <div className="mainContent">{
-            props.getId()?<h2>Hello</h2>:
+            content?<h2>{content.nodeName}</h2>:
             <div className="mainContent--detail">
                 <FontAwesomeIcon icon={faFile} />
                 <p>Welcome to editor</p>

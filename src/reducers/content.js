@@ -2,9 +2,9 @@ const contentReducer = (state = {},action)=>{
     switch(action.type)
     {
         case 'DETAIL':
-            return state;
+            return action.detail;
         default:
-            return state;
+            return null;
     }
 }
 
