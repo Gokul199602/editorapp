@@ -9,6 +9,7 @@ const Modal = (props)=>{
         id:'',
         nodeName:'',
         nodeType:"",
+        content:"",
         children:[]
     });
     const [colName, setColName] = useState(true);

@@ -11,7 +11,7 @@ import {Link,Route,Switch,  BrowserRouter as Router} from 'react-router-dom';
 
 function App() {
   var getLocally = ()=>{
-    let saveData = JSON.parse(localStorage.nodes);
+    let saveData = JSON.parse(localStorage.getItem("nodes"));
     return saveData;
   }
   let globalNodeData = getLocally()||[];
@@ -38,6 +38,22 @@ var createChildrenNode = function(current,id,obj) {
       if(id == current[ck].id)
       {
         current[ck].children.push(obj);
+        return true;
+      }
+      var child = current[ck].children;
+      if(child)
+      {
+       let isReturn = createChildrenNode(child,id,obj);
+       return isReturn;
+      }
+  }
+}
+
+var updateChildrenNode = function(current,id,obj) {
+  for(var ck=0;ck<current.length;ck++) {
+      if(id == current[ck].id)
+      {
+        current[ck] = obj;
         return true;
       }
       var child = current[ck].children;
@@ -91,6 +107,20 @@ var createChildrenNode = function(current,id,obj) {
       nodes.push(obj);
     }
   }
+  const updateNode = (id,obj) =>
+  {
+    let isObjectFound = false;
+    nodes.map((els)=>{
+      if(els.id == id && !isObjectFound)
+      {
+        els = obj;
+      }
+      if(els.children && !isObjectFound)
+      isObjectFound = updateChildrenNode(els.children,id,obj);
+    })
+    storeLocally();
+    return isObjectFound;
+  }
   const toggleModal = ()=>{
     setModal((prev) => !prev);
   }
@@ -124,7 +154,7 @@ var createChildrenNode = function(current,id,obj) {
           <Navcontrol />
           <div className="detailsContainer">
             <Sidenav isOpenModal={openModal} isNode={nodes} getAllNodes={getAllNodes}/>
-            <Content getAllNodes={getAllNodes} getId={getUrlId}/>
+            <Content getAllNodes={getAllNodes} getId={getUrlId} updateNode={updateNode}/>
           </div>
           <Modal isModal={modal} isCloseModal={closeModal} isSave={saveModal} />
       </div>
