@@ -31,6 +31,8 @@ const Sidenav = (props)=>{
   }
     return (
         <div className="sideNavBar">
+            <span className="activeElement">
+            </span>
             <div className="sideNavBar--header">
                 <span className="sideNavBar--header--text">
                     DFIN

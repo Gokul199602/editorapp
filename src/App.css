@@ -183,6 +183,7 @@
 .sideNavBar a
 {
  text-decoration: none;
+ flex: 1;
 }
 .detailsContainer
 {
@@ -193,6 +194,7 @@
 {
   background: #eee;
   flex: 1 1 20%;
+  position: relative;
 } 
 
 .detailsContainer .sideNavBar .sideNavBar--header
@@ -202,6 +204,18 @@
   display: flex;
   justify-content: space-between;
 } 
+
+
+.activeElement
+{
+  position: absolute;
+  width: 100%;
+  height: 38px;
+  display: block;
+  border-left: 2px solid #d32f2f;
+  background: rgba(0,0,0,0.06);
+  top: 78px;
+}
 
 .detailsContainer .sideNavBar .sideNavBar--header .sideNavBar--header--icons>svg,
 .detailsContainer .sideNavBar .sideNavBar--header .sideNavBar--header--icons>a
@@ -229,6 +243,56 @@
 {
   padding: 22px 10%;
 }
+.detailsContainer .mainContent .mainContent--container .mainContent--container--edit
+{
+  background: var(--dark);
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 10px;
+  position: absolute;
+  top: 64px;
+  display: none;
+}
+.detailsContainer .mainContent .mainContent--container .mainContent--container--edit.active
+{
+  display: block;
+}
+.detailsContainer .mainContent .mainContent--container .mainContent--container--edit::before
+{
+  border: solid;
+  border-color: #353232 transparent;
+  border-width: 12px 6px 0 6px;
+  content: "";
+  left: 45%;
+  bottom: 30px;
+  position: absolute;
+  top: 100%;
+}
+.detailsContainer .mainContent .mainContent--container .mainContent--container--edit>svg
+{
+  padding: 4px 9px;
+  font-size: 12px;
+}
+
+.addWidget{
+  position: absolute;
+  bottom: 20px;
+  left: 26%;
+  border-radius: 50%;
+  border: 2px solid #f44336;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f44336;
+}
+
+.detailsContainer .mainContent .mainContent--container .mainContent--container--edit>svg.active
+{
+  color: #f4511e;
+}
+
 .mainContent--header--container
 {
   width: 100%;
@@ -398,7 +462,7 @@ input:checked + .slider:before {
 .modalElement
 {
   position: absolute;
-  top: 50%;
+  top: 37%;
   left: 50%;
   transform: translate(-50%,-50%);
   background: #ffff;
@@ -407,6 +471,14 @@ input:checked + .slider:before {
   border-radius: 12px;
   box-shadow: 1px 1px 9px 1px rgb(0 0 0 / 8%);
   padding: 17px 24px;
+}
+.bodyEls
+{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  background: rgba(0,0,0,0.08);
 }
 .modalElement h2
 {

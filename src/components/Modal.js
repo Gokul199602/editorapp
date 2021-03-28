@@ -9,7 +9,9 @@ const Modal = (props)=>{
         id:'',
         nodeName:'',
         nodeType:"",
-        content:"",
+        content:`
+        <div><font size="7" style="">Topic 1</font></div><strong style="margin: 0px; padding: 0px; font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify; background-color: rgb(255, 255, 255);">Lorem Ipsum</strong><span style="font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify; background-color: rgb(255, 255, 255);">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</span><div><div style="text-align: justify;"><font face="Open Sans, Arial, sans-serif"><span style="font-size: 14px;"><br></span></font></div><div style="text-align: justify;"><div style="text-align: start;"><font size="7">Topic 2</font></div><strong style="margin: 0px; padding: 0px; font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; background-color: rgb(255, 255, 255);">Lorem Ipsum</strong><span style="font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; background-color: rgb(255, 255, 255);">&nbsp;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</span><font face="Open Sans, Arial, sans-serif"><span style="font-size: 14px;"><br></span></font></div><div><span style="font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-size: 14px; text-align: justify; background-color: rgb(255, 255, 255);"><br></span></div><div><br></div></div>
+        `,
         children:[]
     });
     const [colName, setColName] = useState(true);
@@ -43,7 +45,7 @@ const Modal = (props)=>{
     isSave = props.isSave;
     return (
         <div>
-        {isModalShow?<div className="modalElement">
+        {isModalShow?<div className="bodyEls"><div className="modalElement">
             <span className="closeModal" onClick={closeModal}>
                 <FontAwesomeIcon icon={faWindowClose} />
             </span>
@@ -74,7 +76,7 @@ const Modal = (props)=>{
                 <button type="button" onClick={closeModal}>Close</button>
                 <button type="button" onClick={formValidation}>Save</button>
             </div>
-        </div>:null}
+        </div></div>:null}
         </div>
 )}
 
