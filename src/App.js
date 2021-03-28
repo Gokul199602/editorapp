@@ -5,7 +5,9 @@ import Navcontrol from "./components/Navcontrol";
 import Sidenav from "./components/SideNav";
 import Content from "./components/Content";
 import Modal from "./components/Modal";
+import EditContent from "./components/EditContent";
 import swal from 'sweetalert';
+import {Link,Route,Switch,  BrowserRouter as Router} from 'react-router-dom';
 
 function App() {
   var getLocally = ()=>{
@@ -108,17 +110,19 @@ var createChildrenNode = function(current,id,obj) {
     storeLocally();
   }
   return (
-    <div className="App">
-      <header className="App-header">
-        <Nav />
-      </header>
-        <Navcontrol />
-        <div className="detailsContainer">
-          <Sidenav isOpenModal={openModal} isNode={nodes}/>
-          <Content />
-        </div>
-        <Modal isModal={modal} isCloseModal={closeModal} isSave={saveModal} />
-    </div>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <Nav />
+        </header>
+          <Navcontrol />
+          <div className="detailsContainer">
+            <Sidenav isOpenModal={openModal} isNode={nodes}/>
+            <Content getAllNodes={getAllNodes} getId={getUrlId}/>
+          </div>
+          <Modal isModal={modal} isCloseModal={closeModal} isSave={saveModal} />
+      </div>
+    </Router>
   );
 }
 

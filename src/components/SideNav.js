@@ -16,28 +16,27 @@ const Sidenav = (props)=>{
       let childList = [];
       for (const [i, node] of nodeEls.entries()) {
         if(node.nodeType == "container")
-        childList.push(<Container  name={node} callFun={appendChild} isOpenModal={props.isOpenModal}/>);
+        childList.push(<Container key={node.id}   name={node} callFun={appendChild} isOpenModal={props.isOpenModal}/>);
         else
-        childList.push(<Leaf  name={node} callFun={appendChild} />);
+        childList.push(<Leaf key={node.id}   name={node} callFun={appendChild} />);
       }    
       return childList;
   }
   let list = [];
   for (const [i, node] of nodes.entries()) {
     if(node.nodeType == "container")
-    list.push(<Container  name={node} callFun={appendChild} isOpenModal={props.isOpenModal} />);
+    list.push(<Container key={node.id} name={node} callFun={appendChild} isOpenModal={props.isOpenModal} />);
     else
-    list.push(<Leaf  name={node} callFun={appendChild} />);
+    list.push(<Leaf key={node.id} name={node} callFun={appendChild} />);
   }
     return (
-      <Router>
         <div className="sideNavBar">
             <div className="sideNavBar--header">
                 <span className="sideNavBar--header--text">
                     DFIN
                 </span>
                 <span className="sideNavBar--header--icons">
-                      <Link to={'/collection'}>
+                      <Link to={'/collection'} className="tooltip" title="Add Collection">
                        <FontAwesomeIcon icon={faPlus} onClick={props.isOpenModal}/>
                       </Link>
                      <FontAwesomeIcon icon={faExpandAlt} />
@@ -48,7 +47,6 @@ const Sidenav = (props)=>{
                 {list}
             </div>
         </div> 
-      </Router>  
 )}
 
 export default Sidenav;
