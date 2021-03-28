@@ -6,6 +6,16 @@ import {detail} from "../actions/";
 const Leaf = (props)=>{
     let nodes = props.getAllNodes();
     const dispatch = useDispatch();
+    const getUrlId = ()=>
+    {
+        let pathname =  window.location.pathname;
+        if(window.location.pathname.indexOf("collection")==-1)
+        {
+            return parseInt(pathname.split('/')[pathname.split('/').length-1]);
+        }
+        else
+           return null;
+    }
     var getNode = (id) =>{
         let returnObj;
         props.getAllNodes().forEach((els)=>{
@@ -16,7 +26,10 @@ const Leaf = (props)=>{
         })
         return returnObj;
     }
-
+    if(getUrlId())
+    {
+        dispatch(detail(getNode(getUrlId())));
+    }
     var openLeaf = ()=>
     {
         dispatch(detail(getNode(props.name.id)));
