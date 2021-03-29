@@ -188,8 +188,13 @@ body
 /* Details Container */
 .sideNavBar a
 {
- text-decoration: none;
- flex: 1;
+  text-decoration: none;
+  flex: 1 1;
+}
+.sideNavBar--collections--subNode
+{
+  display: flex;
+  align-items: center;
 }
 .detailsContainer
 {
@@ -230,7 +235,7 @@ body
 
 .activeElement
 {
-  display: none;
+  display: none !important;
   position: absolute;
   width: 100%;
   height: 38px;
@@ -404,11 +409,25 @@ body
 .sideNavBar--collections--subNode
 {
   margin-left: 47px;
+  margin-top: 5px;
   cursor: pointer;
   margin-bottom: 10px;
-  display: block;
+  display: flex;
+  align-items: center;
   color: var(--back);
 }
+
+.sideNavBar--collections--subNode.active::before
+{
+  content: '';
+  position: absolute;
+  left: 0px;
+  height: 30px;
+  width: 100%;
+  background: rgba(0,0,0,0.08);
+  border-left: 3px solid red;
+}
+
 .sideNavBar--collections--subNode>span
 {
   font-size: 15px;
@@ -421,11 +440,21 @@ body
   font-weight: 600;
   color: var(--dark);
   text-overflow: ellipsis;
-  display: -webkit-box;
+  display: flex;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+.sideNavBar--collections--mainNode--text.active::before
+{
+  content: '';
+  position: absolute;
+  left: 0px;
+  width: 100%;
+  height: 40px;
+  background: rgba(0,0,0,0.08);
+}
+
 .sideNavBar--collections--children
 {
   display: none;

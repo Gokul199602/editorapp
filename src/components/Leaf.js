@@ -19,14 +19,27 @@ const Leaf = (props)=>{
     }
     var activeElement = (target)=>{
         let activeElement =  document.querySelector(".activeElement"),
-        targetElement = target,
-        topPosition = targetElement.offsetTop+31;
+        targetElement = target;
         targetElement.classList.add("active");
-        activeElement.style.cssText = `
-        top:${topPosition}px;
-        display:block;
-        `;
     }
+    var checkIsactive = ()=>
+    {
+        let activeTarget = document.querySelector(".sideNavBar--collections .active");
+        if(!activeTarget)
+        return;
+        if(!activeTarget.classList.contains("isHidden"))
+        {
+            let activeElement =  document.querySelector(".activeElement"),
+            topPosition = activeTarget.offsetTop+31;
+            activeElement.style.cssText = `
+            top:${topPosition}px;
+            display:block;
+            `;
+        }
+    }
+    useEffect(()=>{
+        checkIsactive();
+    });
     var getNode = (id) =>{
         let returnObj;
         props.getAllNodes().forEach((els)=>{
@@ -51,7 +64,7 @@ const Leaf = (props)=>{
     {
         dispatch(detail(getNode(props.name.id)));
         removeActiveEls();
-        activeElement(e.target);
+        activeElement(e.currentTarget);
         if(window.screen.width <= 600)
         {
             dispatch(collapse(false));
@@ -60,7 +73,7 @@ const Leaf = (props)=>{
 
     console.log("leaf nodes",nodes);
     return (
-        <Link to={'/leaf/'+props.name.id} onClick={openLeaf} className="sideNavBar--collections--subNode" data-path={props.name.path}>
+        <Link to={'/leaf/'+props.name.id} onClick={openLeaf.bind(this)} className="sideNavBar--collections--subNode" data-path={props.name.path}>
                     <span data-path={props.name.path}>{props.name.nodeName}</span>
         </Link>
         

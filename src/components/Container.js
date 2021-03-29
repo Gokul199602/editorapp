@@ -14,34 +14,25 @@ const Container = (props)=>{
     {
         document.querySelector(".sideNavBar--collections").style.cssText = "";
     }
-    const collectionCollapse = ()=>{
+    var removeActiveEls = ()=>
+    {
+        let allActiveEls =  document.querySelectorAll(".sideNavBar--collections--mainNode--text");
+        allActiveEls.forEach((els)=>{
+            els.classList.remove("active");
+        })
+    }
+    const collectionCollapse = (e)=>{
         console.log("input",inputCheckRef);
         let navSide = inputCheckRef.current.parentElement.parentElement;
+        removeActiveEls();
+        e.currentTarget.classList.add("active");
         navSide.classList.toggle("expanded");
         setLists(props.callFun(props.name.children));
-        let activeTarget = document.querySelector(".sideNavBar--collections .active");
-        if(!activeTarget)
-        return;
-        let pathName = activeTarget.getAttribute("data-path");
-        if(pathName.indexOf(props.name.path) == -1 || navSide.classList.contains("expanded"))
-        {
-            let activeElement =  document.querySelector(".activeElement"),
-            topPosition = activeTarget.offsetTop+31;
-            activeElement.style.cssText = `
-            top:${topPosition}px;
-            display:block;
-            `;
-        }
-        else
-        {
-            let activeElement =  document.querySelector(".activeElement");
-            activeElement.style.cssText = "display:none;";
-        }
      }
     return (
     <div className="sideNavBar--collections--mainNode">
             <div className="sideNavBar--collections--mainNode--content">
-                <Link to={'/collection/'+props.name.id} className="sideNavBar--collections--mainNode--text" ref={inputCheckRef} onClick={collectionCollapse} data-path={props.name}>
+                <Link to={'/collection/'+props.name.id} className="sideNavBar--collections--mainNode--text" ref={inputCheckRef} onClick={collectionCollapse.bind(this)} data-path={props.name}>
                     <FontAwesomeIcon icon={faChevronRight} />
                     {props.name.nodeName}
                 </Link>
