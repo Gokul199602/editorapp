@@ -18,7 +18,7 @@ const Content = (props)=>{
     };
     var removeActiveEls = ()=>
     {
-        let allActiveEls =  document.querySelectorAll(".mainContent--containertext>span>svg");
+        let allActiveEls =  document.querySelectorAll(".mainContent--container>span>svg");
         allActiveEls.forEach((els)=>{
             els.classList.remove("active");
         })
@@ -45,7 +45,7 @@ const Content = (props)=>{
     var getElement = (target)=>
     {
         let targetEl = null;
-        let allActiveEls =  document.querySelectorAll(".mainContent--containertext>span>svg");
+        let allActiveEls =  document.querySelectorAll(".mainContent--container--edit>svg");
         allActiveEls.forEach((els)=>{
             if(els.contains(target))
             {

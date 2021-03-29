@@ -3,6 +3,11 @@
   --dark: #353232;
   --light: #fff;
 }
+body
+{
+  max-height: 100vh;
+  overflow: hidden;
+}
 .nav
 {
   height: 60px;
@@ -81,6 +86,7 @@
   top: 105%;
   right: 0px;
   background: #fff;
+  z-index: 10000;
 }
 .nav .nav--right .profile .profile--dropDown ul
 {
@@ -188,13 +194,13 @@
 .detailsContainer
 {
   display: flex;
-  height: calc(100vh - 92px);
+  height: calc(100vh - 131px);
 }
 .detailsContainer .sideNavBar
 {
-  background: #eee;
   flex: 1 1 20%;
   position: relative;
+  background: #fafafa;
 } 
 
 @media only screen and (max-width: 600px) {
@@ -230,6 +236,7 @@
   height: 38px;
   border-left: 2px solid #d32f2f;
   background: rgba(0,0,0,0.06);
+  z-index: 1000;
 }
 
 .detailsContainer .sideNavBar .sideNavBar--header .sideNavBar--header--icons>span,
@@ -349,7 +356,19 @@
   font-size: 28px;
   flex-direction: column;
 }
+.sideNavBar--collections
+{
+  max-height: 100%;
+  background: #fafafa;
+  overflow-y: auto;
+  position: inherit;
+  overflow-x: hidden;
+  height: 100%;
+}
 
+/* .sideNavBar--collections::-webkit-scrollbar {
+  width: 5px;
+  height: 2px; } */
 .sideNavBar--collections .sideNavBar--collections--mainNode
 {
   margin-left: 10px;
@@ -401,6 +420,11 @@
   align-items: center;
   font-weight: 600;
   color: var(--dark);
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .sideNavBar--collections--children
 {

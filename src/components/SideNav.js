@@ -5,11 +5,14 @@ import { faAngleDoubleLeft,faExpandAlt,faPlus,faEllipsisV,faPlusSquare,faChevron
 import Container from "./Container";
 import {useSelector} from 'react-redux';
 import Leaf from "./Leaf";
+import {collapse} from "../actions/";
+import {useDispatch} from 'react-redux';
 
 
 const Sidenav = (props)=>{
   
   const inputCheckRef = useRef(null);
+  const dispatch = useDispatch();
   let nodes =  props.isNode;
   const iscollapse = useSelector(state => state.collapse);
   const appendChild = (nodeEls)=>
@@ -25,10 +28,11 @@ const Sidenav = (props)=>{
       }    
       return childList;
   }
+  
   let list = [];
   for (const [i, node] of nodes.entries()) {
     if(node.nodeType == "container")
-    list.push(<Container key={node.id} name={node} callFun={appendChild} isOpenModal={props.isOpenModal} />);
+    list.push(<Container key={node.id} name={node} callFun={appendChild} isOpenModal={props.isOpenModal}  />);
     else
     list.push(<Leaf key={node.id} name={node} callFun={appendChild} getAllNodes={props.getAllNodes} />);
   }
@@ -47,7 +51,7 @@ const Sidenav = (props)=>{
                       <span  className="tooltip" title="Expand">
                         <FontAwesomeIcon icon={faExpandAlt}/>
                       </span>
-                      <span  className="tooltip" title="Minimize">
+                      <span  className="tooltip" title="Minimize" onClick={()=>{dispatch(collapse())}}>
                       <FontAwesomeIcon icon={faAngleDoubleLeft}/>
                      </span>
                 </span>

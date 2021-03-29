@@ -6,6 +6,14 @@ import {Link,Route,Switch,  BrowserRouter as Router} from 'react-router-dom';
 const Container = (props)=>{
     const inputCheckRef = useRef(null);
     const [lists, setLists] = useState([]);
+    const setOverflow = ()=>
+    {
+        document.querySelector(".sideNavBar--collections").style.cssText = "overflow:visible;";
+    }
+    const unsetOverflow = ()=>
+    {
+        document.querySelector(".sideNavBar--collections").style.cssText = "";
+    }
     const collectionCollapse = ()=>{
         console.log("input",inputCheckRef);
         let navSide = inputCheckRef.current.parentElement.parentElement;
@@ -18,7 +26,7 @@ const Container = (props)=>{
         if(pathName.indexOf(props.name.path) == -1 || navSide.classList.contains("expanded"))
         {
             let activeElement =  document.querySelector(".activeElement"),
-            topPosition = activeTarget.offsetTop-8;
+            topPosition = activeTarget.offsetTop+31;
             activeElement.style.cssText = `
             top:${topPosition}px;
             display:block;
@@ -38,13 +46,13 @@ const Container = (props)=>{
                     {props.name.nodeName}
                 </Link>
                 <span className="sideNavBar--collections--mainNode--icon">
-                    <Link to={'/collection/'+props.name.id} onClick={props.isOpenModal} className="tooltip" title="Create Item">
+                    <Link to={'/collection/'+props.name.id} onClick={props.isOpenModal} className="tooltip" title="Create Item"  onMouseOver={setOverflow} onMouseOut={unsetOverflow}>
                         <FontAwesomeIcon icon={faPlus} />
                     </Link>
-                    <span to={'/collection/'+props.name.id} onClick={props.isOpenModal} className="tooltip" title="Add Collection">
+                    <span to={'/collection/'+props.name.id} onClick={props.isOpenModal} className="tooltip" title="Add Collection" onMouseOver={setOverflow} onMouseOut={unsetOverflow}>
                          <FontAwesomeIcon icon={faPlusSquare} />
                     </span>
-                    <span className="tooltip" title="More">
+                    <span className="tooltip" title="More" onMouseOver={setOverflow} onMouseOut={unsetOverflow}>
                          <FontAwesomeIcon icon={faEllipsisV} />
                     </span>
                 </span>

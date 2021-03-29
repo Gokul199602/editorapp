@@ -20,7 +20,7 @@ const Leaf = (props)=>{
     var activeElement = (target)=>{
         let activeElement =  document.querySelector(".activeElement"),
         targetElement = target,
-        topPosition = targetElement.offsetTop-8;
+        topPosition = targetElement.offsetTop+31;
         targetElement.classList.add("active");
         activeElement.style.cssText = `
         top:${topPosition}px;
