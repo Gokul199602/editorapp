@@ -5,7 +5,6 @@ import { faEllipsisV } from '@fortawesome/free-solid-svg-icons'
 
 
 
-
 const Navcontrol = ()=>{
     const [navIndex, setNavIndex] = useState({ activeIndex: 1 });
     function handleClick(index) 

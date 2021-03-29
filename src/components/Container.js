@@ -38,11 +38,15 @@ const Container = (props)=>{
                     {props.name.nodeName}
                 </Link>
                 <span className="sideNavBar--collections--mainNode--icon">
-                    <Link to={'/collection/'+props.name.id} onClick={props.isOpenModal}>
+                    <Link to={'/collection/'+props.name.id} onClick={props.isOpenModal} className="tooltip" title="Create Item">
                         <FontAwesomeIcon icon={faPlus} />
                     </Link>
-                    <FontAwesomeIcon icon={faPlusSquare} />
-                    <FontAwesomeIcon icon={faEllipsisV} />
+                    <span to={'/collection/'+props.name.id} onClick={props.isOpenModal} className="tooltip" title="Add Collection">
+                         <FontAwesomeIcon icon={faPlusSquare} />
+                    </span>
+                    <span className="tooltip" title="More">
+                         <FontAwesomeIcon icon={faEllipsisV} />
+                    </span>
                 </span>
             </div>
             <div className="sideNavBar--collections--children">

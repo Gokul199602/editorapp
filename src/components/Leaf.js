@@ -1,11 +1,12 @@
 import React,{useEffect,useRef,useState} from "react";
 import {Link,Route,Switch,  BrowserRouter as Router} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux';
-import {detail} from "../actions/";
+import {detail,collapse} from "../actions/";
 
 const Leaf = (props)=>{
     let nodes = props.getAllNodes();
     const dispatch = useDispatch();
+    let isActive = false;
     const getUrlId = ()=>
     {
         let pathname =  window.location.pathname;
@@ -15,6 +16,16 @@ const Leaf = (props)=>{
         }
         else
            return null;
+    }
+    var activeElement = (target)=>{
+        let activeElement =  document.querySelector(".activeElement"),
+        targetElement = target,
+        topPosition = targetElement.offsetTop-8;
+        targetElement.classList.add("active");
+        activeElement.style.cssText = `
+        top:${topPosition}px;
+        display:block;
+        `;
     }
     var getNode = (id) =>{
         let returnObj;
@@ -40,14 +51,11 @@ const Leaf = (props)=>{
     {
         dispatch(detail(getNode(props.name.id)));
         removeActiveEls();
-        let activeElement =  document.querySelector(".activeElement"),
-        targetElement = e.target,
-        topPosition = targetElement.offsetTop-8;
-        targetElement.classList.add("active");
-        activeElement.style.cssText = `
-        top:${topPosition}px;
-        display:block;
-        `;
+        activeElement(e.target);
+        if(window.screen.width <= 600)
+        {
+            dispatch(collapse(false));
+        }
     }
 
     console.log("leaf nodes",nodes);

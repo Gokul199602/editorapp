@@ -36,9 +36,6 @@ const Content = (props)=>{
             top: ${top}px;
             left: ${left}px;
             `;
-            setTimeout(()=>{
-                selecElement();
-            },100)
         }
         else
         {
@@ -163,17 +160,17 @@ const Content = (props)=>{
                     onClick={selecElement}
                     tagName='article' // Use a custom HTML tag (uses a div by default)
                     /> 
-                    <span className={edit?"mainContent--container--edit active":"mainContent--container--edit"} ref={wrapperRef} onMouseDown={(e)=>{e.preventDefault()}}>
+                    <span className="addWidget">
+                        <FontAwesomeIcon icon={faPlus}/>
+                    </span>
+                </div>
+                <span className={edit?"mainContent--container--edit active":"mainContent--container--edit"} ref={wrapperRef} onMouseDown={(e)=>{e.preventDefault()}}>
                         <FontAwesomeIcon icon={faBold} onClick={bold}/>
                         <FontAwesomeIcon icon={faItalic} onClick={italic}/>
                         <FontAwesomeIcon icon={faUnderline} onClick={underline}/>
                         <FontAwesomeIcon icon={faHeading} onClick={header1}/>
                         <FontAwesomeIcon icon={faParagraph} onClick={para} />
-                    </span>
-                    <span className="addWidget">
-                        <FontAwesomeIcon icon={faPlus}/>
-                    </span>
-                </div>
+                </span>
             </div>
             :
             <div className="mainContent--detail">

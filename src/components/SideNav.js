@@ -3,12 +3,15 @@ import {Link,Route,Switch,  BrowserRouter as Router} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDoubleLeft,faExpandAlt,faPlus,faEllipsisV,faPlusSquare,faChevronRight} from '@fortawesome/free-solid-svg-icons';
 import Container from "./Container";
+import {useSelector} from 'react-redux';
 import Leaf from "./Leaf";
 
 
 const Sidenav = (props)=>{
+  
   const inputCheckRef = useRef(null);
   let nodes =  props.isNode;
+  const iscollapse = useSelector(state => state.collapse);
   const appendChild = (nodeEls)=>
   {
       if(!nodeEls)
@@ -30,7 +33,7 @@ const Sidenav = (props)=>{
     list.push(<Leaf key={node.id} name={node} callFun={appendChild} getAllNodes={props.getAllNodes} />);
   }
     return (
-        <div className="sideNavBar">
+        <div className={iscollapse?"sideNavBar collapsed":"sideNavBar"}>
             <span className="activeElement">
             </span>
             <div className="sideNavBar--header">
@@ -41,8 +44,12 @@ const Sidenav = (props)=>{
                       <Link to={'/collection'} className="tooltip" title="Add Collection">
                        <FontAwesomeIcon icon={faPlus} onClick={props.isOpenModal}/>
                       </Link>
-                     <FontAwesomeIcon icon={faExpandAlt} />
-                     <FontAwesomeIcon icon={faAngleDoubleLeft} />
+                      <span  className="tooltip" title="Expand">
+                        <FontAwesomeIcon icon={faExpandAlt}/>
+                      </span>
+                      <span  className="tooltip" title="Minimize">
+                      <FontAwesomeIcon icon={faAngleDoubleLeft}/>
+                     </span>
                 </span>
             </div>
             <div className="sideNavBar--collections">

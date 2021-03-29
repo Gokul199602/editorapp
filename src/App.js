@@ -19,7 +19,7 @@ function App() {
   const [nodes, setNodes] = useState(globalNodeData);
   var traverse = function(current,nodeArr,path) {
     for(var ck=0;ck<current.length;ck++) {
-        var childPathName = path+`${current[ck].nodeName}/`;
+        var childPathName = path+`/${current[ck].nodeName}`;
         current[ck].path = childPathName;
         nodeArr.push(current[ck]);
         var child = current[ck].children;
@@ -68,7 +68,7 @@ var updateChildrenNode = function(current,id,obj) {
     let allNodes = [];
     let path = "";
     nodes.map((els)=>{
-      path = `${els.nodeName}/`;
+      path = `${els.nodeName}`;
       els.path = path;
       console.log(path);
       allNodes.push(els);

@@ -4,3 +4,9 @@ export const detail = (detail) => {
         detail:detail
     };
 }
+
+export const collapse = () => {
+    return{
+        type: 'COLAPLSE',
+    };
+}

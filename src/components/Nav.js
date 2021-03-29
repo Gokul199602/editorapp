@@ -1,7 +1,8 @@
 import React,{useEffect,useRef,useState} from "react";
-import {Link,Route,Switch,  BrowserRouter as Router} from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch,faBars, faUserPlus, faBell } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch,faBars, faUserPlus, faBell } from '@fortawesome/free-solid-svg-icons';
+import {useDispatch} from 'react-redux';
+import {collapse} from "../actions/";
 
 
 function DropdownClose(ref,setSidenav) {
@@ -23,6 +24,7 @@ const Nav = ()=>{
     const wrapperRef = useRef(null);
     const inputCheckRef = useRef(null);
     const [sidenav, setSidenav] = useState(false);
+    const dispatch = useDispatch();
     const [isDark, setIsDark] = useState(false);
     DropdownClose(wrapperRef,setSidenav);
     const dropDownClick = ()=>{
@@ -35,7 +37,7 @@ const Nav = ()=>{
     return (
     <nav className={isDark?"nav dark":"nav"}>
        <div className="nav--left">
-           <span className="collapse">
+           <span className="collapse" onClick={()=>{dispatch(collapse())}}>
              <FontAwesomeIcon icon={faBars} />
            </span>
            <span className="input">
