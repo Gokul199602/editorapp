@@ -462,6 +462,13 @@ body
 {
   transform: rotate(90deg);
 }
+.sideNavBar--collections--mainNode--content--text
+{
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
 .sideNavBar--collections .sideNavBar--collections--mainNode.expanded>.sideNavBar--collections--children
 {
   display: block;

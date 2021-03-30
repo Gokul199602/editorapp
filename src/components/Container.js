@@ -34,7 +34,7 @@ const Container = (props)=>{
             <div className="sideNavBar--collections--mainNode--content">
                 <Link to={'/collection/'+props.name.id} className="sideNavBar--collections--mainNode--text" ref={inputCheckRef} onClick={collectionCollapse.bind(this)} data-path={props.name}>
                     <FontAwesomeIcon icon={faChevronRight} />
-                    {props.name.nodeName}
+                    <span class="sideNavBar--collections--mainNode--content--text">{props.name.nodeName}</span>
                 </Link>
                 <span className="sideNavBar--collections--mainNode--icon">
                     <Link to={'/collection/'+props.name.id} onClick={props.isOpenModal} className="tooltip" title="Create Item"  onMouseOver={setOverflow} onMouseOut={unsetOverflow}>
