@@ -431,6 +431,11 @@ body
 .sideNavBar--collections--subNode>span
 {
   font-size: 15px;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
 }
 
 .sideNavBar--collections--mainNode--text

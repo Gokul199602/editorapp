@@ -1,7 +1,7 @@
-import React,{useEffect,useRef,useState} from "react";
-import {Link,Route,Switch,  BrowserRouter as Router} from 'react-router-dom';
+import React from "react";
+import {Link} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDoubleLeft,faExpandAlt,faPlus,faEllipsisV,faPlusSquare,faChevronRight} from '@fortawesome/free-solid-svg-icons';
+import { faAngleDoubleLeft,faExpandAlt,faPlus} from '@fortawesome/free-solid-svg-icons';
 import Container from "./Container";
 import {useSelector} from 'react-redux';
 import Leaf from "./Leaf";
@@ -10,8 +10,6 @@ import {useDispatch} from 'react-redux';
 
 
 const Sidenav = (props)=>{
-  
-  const inputCheckRef = useRef(null);
   const dispatch = useDispatch();
   let nodes =  props.isNode;
   const iscollapse = useSelector(state => state.collapse);

@@ -1,12 +1,11 @@
-import React,{useEffect,useRef,useState} from "react";
-import {Link,Route,Switch,  BrowserRouter as Router} from 'react-router-dom';
-import {useSelector, useDispatch} from 'react-redux';
+import React,{useEffect} from "react";
+import {Link} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
 import {detail,collapse} from "../actions/";
 
 const Leaf = (props)=>{
     let nodes = props.getAllNodes();
     const dispatch = useDispatch();
-    let isActive = false;
     const getUrlId = ()=>
     {
         let pathname =  window.location.pathname;
@@ -18,8 +17,7 @@ const Leaf = (props)=>{
            return null;
     }
     var activeElement = (target)=>{
-        let activeElement =  document.querySelector(".activeElement"),
-        targetElement = target;
+        let targetElement = target;
         targetElement.classList.add("active");
     }
     var checkIsactive = ()=>
