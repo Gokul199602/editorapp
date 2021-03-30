@@ -41,9 +41,10 @@ var createChildrenNode = function(current,id,obj) {
         return true;
       }
       var child = current[ck].children;
-      if(child)
+      if(child.length)
       {
        let isReturn = createChildrenNode(child,id,obj);
+       if(isReturn)
        return isReturn;
       }
   }

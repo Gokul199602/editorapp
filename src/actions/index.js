@@ -5,8 +5,9 @@ export const detail = (detail) => {
     };
 }
 
-export const collapse = () => {
+export const collapse = (isCollapse) => {
     return{
         type: 'COLAPLSE',
+        collapse:isCollapse
     };
 }
